@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
-</head>
-<body>
-    <form action="/users/signup" method="post">
+  </head>
+  <body>
+    <div class="container">
+      <form action="/user/signup" method="post">
         <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Full Name" aria-label="fullname" name="email">
-            </div>
-            <div class="col">
-              <input type="email" class="form-control" placeholder="Email" aria-label="email" name="email">
-            </div>
-            <div class="col">
-                <input type="password" class="form-control" placeholder="password" aria-label="password" name="password">
-            </div>
+          <div class="col mt-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Full Name"
+              aria-label="fullname"
+              name="fullname"
+            />
+          </div>
+          <br />
+          <div class="col mt-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              aria-label="email"
+              name="email"
+            />
+          </div>
+          <br />
+          <div class="col mt-3">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="password"
+              aria-label="password"
+              name="password"
+            />
+          </div>
+          <br />
         </div>
-    </form>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
     <%- include("./partials/scripts") %>
-</body>
+  </body>
 </html>
