@@ -1,6 +1,5 @@
 
 const displaySignupPage = (req , res)=>{
-    console.log("ok");
     return res.render("signup");
 }
 
