@@ -8,14 +8,21 @@ const handleUserSignup = async (req , res)=>{
         email,
         password,
     });
+
     return res.redirect("/");
 }
 
 const handleUserLogin = async(req , res)=>{
     const{email , password} = req.body;
+    try {
+        const token= await User.matchPassword(email , password);
+        console.log(token);
+        return res.cookie("token" , token).redirect("/");
+    } catch (error) {
+        return res.render("login" , {error : "incorrect credentials"});
+    }
+   
     
-    const user= await User.matchPassword(email , password);
-    return res.redirect("/");
 }
 
 module.exports = {
