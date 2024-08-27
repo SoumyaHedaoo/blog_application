@@ -11,11 +11,14 @@ const handleUserSignup = async (req , res)=>{
     return res.redirect("/");
 }
 
-const handleuserSignup = async(req , res)=>{
+const handleUserLogin = async(req , res)=>{
     const{email , password} = req.body;
     
+    const user= await User.matchPassword(email , password);
+    return res.redirect("/");
 }
 
 module.exports = {
-    handleUserSignup
+    handleUserSignup,
+    handleUserLogin
 };
