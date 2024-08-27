@@ -1,6 +1,7 @@
 const {createHmac , randomBytes} = require("node:crypto");
 
 const {Schema , model} =require("mongoose");
+const { createTokenForUser } = require("../services/auth");
 
 const userSchema = new Schema({
     fullname : {
@@ -61,7 +62,8 @@ const userSchema = new Schema({
 
     if(correctPassword !== incryptedPassword) throw new Error('Incorrect passowrd');
 
-    return user;
+    const token = createTokenForUser(user);
+    return token;
 
   });
 
