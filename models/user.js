@@ -33,8 +33,8 @@ const userSchema = new Schema({
     timestamps : true,
 });
 
- userSchema.pre("save" , function(next){
-    const user = this;
+ userSchema.pre("save" , async function(next){
+    const user =await this;
 
     if(!user.isModified("password")) return;
 
@@ -48,6 +48,22 @@ const userSchema = new Schema({
 
     next();
  });
+
+  userSchema.static("matchPassword" , async function(email , password){
+    const user=await this.findOne({email});
+    if(!user) throw new Error('User not found');
+    
+    const correctPassword=user.password;
+
+    const incryptedPassword = createHmac("sha256" , user.salt)
+        .update(password)
+        .digest("hex");
+
+    if(correctPassword !== incryptedPassword) throw new Error('Incorrect passowrd');
+
+    return user;
+
+  });
 
 const User = model("user" , userSchema);
 
