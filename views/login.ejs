@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <%- include("./partials/head") %>
     <title>LOGIN</title>
-</head>
-<body>
+  </head>
+  <body>
+    <% if (locals.error) { %>
+    <div class="alert alert-danger" role="alert">Incorrect Credentials</div>
+    <% } %>
     <div class="container">
-        <form action="/user/login" method="post">
-          <div class="row">
-            <div class="col mt-3">
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Email"
-                aria-label="email"
-                name="email"
-              />
-            </div>
-            <br />
-            <div class="col mt-3">
-              <input
-                type="password"
-                class="form-control"
-                placeholder="password"
-                aria-label="password"
-                name="password"
-              />
-            </div>
-            <br />
+      <form action="/user/login" method="post">
+        <div class="row">
+          <div class="col mt-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              aria-label="email"
+              name="email"
+            />
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
+          <br />
+          <div class="col mt-3">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="password"
+              aria-label="password"
+              name="password"
+            />
+          </div>
+          <br />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
     <%- include("./partials/scripts") %>
-</body>
+  </body>
 </html>
