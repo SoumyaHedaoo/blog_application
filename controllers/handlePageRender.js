@@ -8,7 +8,7 @@ const displayLoginPage=(req , res)=>{
 }
 
 const displayHomePage = (req , res) =>{
-    return res.render("home" , {user : req.user });
+    return res.render("home" , {user : req.user});
 }
 
 
