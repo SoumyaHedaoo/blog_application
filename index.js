@@ -3,6 +3,7 @@ const cookeParser = require("cookie-parser");
 const {handleConnecton} = require("./connections");
 const path= require ("path");
 const userRoute = require("./routes/user");
+const blogRoute = require("./routes/blog");
 const { displayHomePage} = require("./controllers/handlePageRender");
 const cookieParser = require("cookie-parser");
 const { checkAuthenticationCookie } = require("./middleware/authentication");
@@ -20,7 +21,7 @@ app.use(checkAuthenticationCookie("token"));
 app.get("/" , displayHomePage);
 
 app.use("/user" , userRoute);
-
+app.use("/blogs" , blogRoute);
 app.listen(PORT , ()=> console.log(`server stared at PORT : ${PORT}`));
 
 
