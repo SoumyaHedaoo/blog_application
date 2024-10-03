@@ -17,8 +17,8 @@ app.set("views" , path.resolve("./views"));
 
 app.use(express.urlencoded({extended : false}));
 app.use(cookieParser());
-app.use(express.static(path.resolve("./public")));
 app.use(checkAuthenticationCookie("token"));
+app.use(express.static(path.resolve("./public")));
 app.get("/" , displayHomePage);
 
 app.use("/user" , userRoute);
