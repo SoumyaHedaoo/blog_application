@@ -12,9 +12,15 @@ const displayHomePage = async(req , res) =>{
     return res.render("home" , {user : req.user , blogs : allBlogs});
 }
 
+const handleRenderBlog = async(req , res) =>{
+    const blog = await Blog.findById(req.params.id).populate("createdBy");
+
+    return res.render('blog' , {user : req.user , blog});
+}
 
 module.exports = {
     displayLoginPage,
     displaySignupPage,
-    displayHomePage
+    displayHomePage,
+    handleRenderBlog
 };
