@@ -1,5 +1,6 @@
 const Blog = require("../models/blog");
 const CreateNewBlog = (req , res)=>{
+    if(!req.user) return res.redirect('/')
     return res.render("addblog" ,{ user : req.user});
 }
 
@@ -11,7 +12,7 @@ const handleSubmitBlog = async(req , res) => {
         createdBy : req.user._id,
         thumbnailImage : `uploads/${req.file.filename}`
     });
-    return res.redirect(`/blog/${blog._id}`);
+    return res.redirect(`/blogs/${blog._id}`);
 }
 
 module.exports = {
