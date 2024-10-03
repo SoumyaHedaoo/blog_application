@@ -27,8 +27,7 @@ const userSchema = new Schema({
     },
     userImage : {
         type : String,
-        default: "./public/default_mage.png",
-
+        default: "/images/default.png",
     }
 },{
     timestamps : true,
